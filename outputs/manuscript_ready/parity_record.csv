@@ -1,0 +1,15 @@
+Table,Metric,Published,Rebuilt,Match,Power
+Table 1,IF anomaly count,5000.0,5000.0,yes,trivial
+Table 1,LOF(auto) anomaly count,2565.0,2565.0,yes,DIAGNOSTIC
+Table 1,LOF(0.05) anomaly count,5000.0,5000.0,yes,trivial
+Table 2,IF n LOF(auto),341.0,341.0,yes,DIAGNOSTIC
+Table 2,IF n LOF(0.05),545.0,545.0,yes,DIAGNOSTIC
+Table 2,LOF(auto) n LOF(0.05),2565.0,2565.0,yes,DIAGNOSTIC
+Table 3,Anomaly vs Normal / Number of Services,510000000.0,509846027.5,yes,DIAGNOSTIC
+Table 3,Anomaly vs Normal / Average Medicare Payme,536000000.0,536136230.5,yes,DIAGNOSTIC
+Table 3,IF Only vs LOF Only / Number of Services,12100000.0,12080942.5,yes,DIAGNOSTIC
+Table 3,IF Only vs LOF Only / Average Medicare Payme,14600000.0,14621309.0,yes,DIAGNOSTIC
+Table 4,Anomaly vs Normal / Provider Type,7496.33,7496.33,yes,DIAGNOSTIC
+Table 4,Anomaly vs Normal / Entity Type of the Pro,1855.13,1855.13,yes,DIAGNOSTIC
+Table 4,IF Only vs LOF Only / Provider Type,2408.72,2408.72,yes,DIAGNOSTIC
+Table 4,IF Only vs LOF Only / Entity Type of the Pro,157.39,157.39,yes,DIAGNOSTIC

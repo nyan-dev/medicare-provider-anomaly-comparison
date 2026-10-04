@@ -1,0 +1,8 @@
+feature,Number of Services,Number of Medicare Beneficiaries,Number of Distinct Medicare Beneficiary/Per Day Services,Average Medicare Allowed Amount,Average Submitted Charge Amount,Average Medicare Payment Amount,Average Medicare Standardized Amount
+Number of Services,1.0,0.6589,0.6751,-0.0204,-0.0197,-0.02,-0.0201
+Number of Medicare Beneficiaries,0.6589,1.0,0.9811,-0.0081,-0.0086,-0.0078,-0.0078
+Number of Distinct Medicare Beneficiary/Per Day Services,0.6751,0.9811,1.0,-0.0105,-0.0118,-0.0102,-0.0103
+Average Medicare Allowed Amount,-0.0204,-0.0081,-0.0105,1.0,0.7398,0.9987,0.9948
+Average Submitted Charge Amount,-0.0197,-0.0086,-0.0118,0.7398,1.0,0.7388,0.7335
+Average Medicare Payment Amount,-0.02,-0.0078,-0.0102,0.9987,0.7388,1.0,0.9946
+Average Medicare Standardized Amount,-0.0201,-0.0078,-0.0103,0.9948,0.7335,0.9946,1.0

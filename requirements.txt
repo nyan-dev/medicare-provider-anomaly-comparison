@@ -1,0 +1,34 @@
+# =====================================================================
+# Versions marked (parity-verified) are the combination in which the
+# submitted Table 1 and Table 2 values were reproduced exactly on
+# 2026-09-21: LOF(auto)=2565, IF n LOF(auto)=341, IF n LOF(0.05)=545.
+# See REPRODUCIBILITY.md sections 2 and 5.
+#
+# The original repository pinned nothing, so there is no upstream
+# environment to match -- this IS the reference environment.
+#
+# Superseded bounds: numpy<2.0.0 and scikit-learn<1.6.0 both EXCLUDED
+# the versions that actually achieve parity. Do not reinstate them.
+#
+# Remaining packages get pinned once NB1/NB5/NB6 report what Colab
+# resolves. Pins come from observed environments, never from guesses.
+# =====================================================================
+
+# Core Scientific & Data Processing  (parity-verified)
+numpy==2.0.2
+pandas==2.3.3
+scipy==1.13.1
+pyarrow>=10.0.0
+
+# Machine Learning & Statistical Modeling  (parity-verified)
+scikit-learn==1.6.1
+
+# Visualization & Reporting
+matplotlib>=3.5.0
+seaborn>=0.12.0
+matplotlib-venn>=0.11.9
+
+# Environment & Interactive Execution
+jupyter>=1.0.0
+ipykernel>=6.0.0
+tqdm>=4.64.0

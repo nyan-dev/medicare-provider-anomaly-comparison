@@ -1,0 +1,193 @@
+{
+  "notebook": "NB05",
+  "status": "SUCCESS",
+  "timestamp": "2026-09-20T22:28:54.040703",
+  "environment": {
+    "python": "3.13.15",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.6.1",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.0",
+    "seaborn": "0.13.2"
+  },
+  "seed": 42,
+  "addresses_comment": "C1",
+  "inputs_consumed": [
+    "outputs/notebook_exports/summary_NB04.json",
+    "data/processed/features_raw.parquet",
+    "data/processed/anomaly_labels.parquet",
+    "data/processed/consensus_anomalies.parquet"
+  ],
+  "outputs": {
+    "synthetic_validation": "outputs/tables/nb05_synthetic_validation.csv",
+    "ranking_metrics": "outputs/tables/nb05_ranking_metrics.csv",
+    "case_profiles": "outputs/tables/nb05_consensus_case_profiles.csv",
+    "rate_sensitivity": "outputs/tables/nb05_injection_rate_sensitivity.csv",
+    "figure_mechanism": "outputs/figures/nb05_fig_detection_by_mechanism.png",
+    "figure_pr": "outputs/figures/nb05_fig_pr_curves.png"
+  },
+  "injection_protocol": {
+    "rate": 0.002,
+    "realised_rate": 0.001995,
+    "n_injected_total": 181,
+    "n_type_a_global": 90,
+    "n_type_b_local": 91,
+    "clean_base_size": 90545,
+    "clean_base_definition": "records flagged by neither IF nor LOF(0.05) in NB02",
+    "type_a_construction": "3 randomly chosen features drawn from U(p99.9, 1.2 x observed max)",
+    "type_b_construction": "Allowed Amount drawn from U(p85, p90); Payment and Standardized from U(p10, p15) -- breaks the r~1.00 relationship with no extreme marginal",
+    "seed": 42,
+    "rate_justification": "matches manuscript contamination=0.05; mid-band of the 3-10% prevalence range (Morris 2009; Clemente et al. 2018)",
+    "mechanism_justification": "Type A targets IF's documented strength (Liu et al. 2008); Type B targets LOF's (Breunig et al. 2000). Protocol after Campos et al. (2016) and Goldstein & Uchida (2016)."
+  },
+  "key_results": {
+    "validation_metrics": [
+      {
+        "Model": "Isolation Forest",
+        "Anomaly type": "All injected",
+        "N injected": 181,
+        "Detected": 97,
+        "Precision": 0.0214,
+        "Recall": 0.5359,
+        "F1": 0.0411
+      },
+      {
+        "Model": "Isolation Forest",
+        "Anomaly type": "A - global/extreme",
+        "N injected": 90,
+        "Detected": 90,
+        "Precision": 0.0199,
+        "Recall": 1.0,
+        "F1": 0.039
+      },
+      {
+        "Model": "Isolation Forest",
+        "Anomaly type": "B - local/density",
+        "N injected": 91,
+        "Detected": 7,
+        "Precision": 0.0016,
+        "Recall": 0.0769,
+        "F1": 0.0031
+      },
+      {
+        "Model": "LOF",
+        "Anomaly type": "All injected",
+        "N injected": 181,
+        "Detected": 76,
+        "Precision": 0.0168,
+        "Recall": 0.4199,
+        "F1": 0.0322
+      },
+      {
+        "Model": "LOF",
+        "Anomaly type": "A - global/extreme",
+        "N injected": 90,
+        "Detected": 48,
+        "Precision": 0.0106,
+        "Recall": 0.5333,
+        "F1": 0.0209
+      },
+      {
+        "Model": "LOF",
+        "Anomaly type": "B - local/density",
+        "N injected": 91,
+        "Detected": 28,
+        "Precision": 0.0062,
+        "Recall": 0.3077,
+        "F1": 0.0122
+      }
+    ],
+    "ranking_metrics": [
+      {
+        "Model": "Isolation Forest",
+        "Anomaly type": "All injected",
+        "ROC-AUC": 0.9135,
+        "Average Precision": 0.4451,
+        "Precision@n": 0.4641,
+        "Baseline AP (prevalence)": 0.002
+      },
+      {
+        "Model": "Isolation Forest",
+        "Anomaly type": "A - global/extreme",
+        "ROC-AUC": 0.9998,
+        "Average Precision": 0.8831,
+        "Precision@n": 0.7667,
+        "Baseline AP (prevalence)": 0.001
+      },
+      {
+        "Model": "Isolation Forest",
+        "Anomaly type": "B - local/density",
+        "ROC-AUC": 0.8281,
+        "Average Precision": 0.0027,
+        "Precision@n": 0.0,
+        "Baseline AP (prevalence)": 0.001
+      },
+      {
+        "Model": "LOF",
+        "Anomaly type": "All injected",
+        "ROC-AUC": 0.7492,
+        "Average Precision": 0.2287,
+        "Precision@n": 0.2541,
+        "Baseline AP (prevalence)": 0.002
+      },
+      {
+        "Model": "LOF",
+        "Anomaly type": "A - global/extreme",
+        "ROC-AUC": 0.9405,
+        "Average Precision": 0.354,
+        "Precision@n": 0.3667,
+        "Baseline AP (prevalence)": 0.001
+      },
+      {
+        "Model": "LOF",
+        "Anomaly type": "B - local/density",
+        "ROC-AUC": 0.56,
+        "Average Precision": 0.0533,
+        "Precision@n": 0.0769,
+        "Baseline AP (prevalence)": 0.001
+      }
+    ],
+    "complementarity_double_dissociation": false,
+    "rate_sensitivity": [
+      {
+        "Injection rate": 0.002,
+        "N injected": 181,
+        "IF ROC-AUC": 1.0,
+        "LOF ROC-AUC": 0.7724
+      },
+      {
+        "Injection rate": 0.005,
+        "N injected": 455,
+        "IF ROC-AUC": 1.0,
+        "LOF ROC-AUC": 0.5427
+      },
+      {
+        "Injection rate": 0.01,
+        "N injected": 915,
+        "IF ROC-AUC": 1.0,
+        "LOF ROC-AUC": 0.4817
+      },
+      {
+        "Injection rate": 0.05,
+        "N injected": 4766,
+        "IF ROC-AUC": 1.0,
+        "LOF ROC-AUC": 0.3389
+      }
+    ],
+    "lof_degrades_with_injection_rate": true,
+    "lof_better_at_top_n_for_local_anomalies": true,
+    "if_stable_across_injection_rate": true,
+    "n_case_profiles": 15,
+    "case_profiles_with_p99_feature": 15
+  },
+  "assertions": {
+    "upstream_nb04_verified": true,
+    "clean_base_excludes_all_flagged": true,
+    "type_b_has_no_extreme_marginals": true,
+    "validation_matrix_no_nan": true,
+    "realised_rate_matches_target": true,
+    "rate_sensitivity_measured": true
+  },
+  "downstream_note": "NB07 renders both figures and the three tables as the C1 manuscript subsection. Cite ROC-AUC, Average Precision and Precision@n as primary evidence: with 5% flagged and 0.2% planted, fixed-threshold precision is bounded near 0.04 by construction. DO NOT write this experiment up as evidence for complementarity -- Isolation Forest outperforms LOF on both mechanisms and no double dissociation was observed. Complementarity rests on NB04 (different records flagged, 2.2-2.7x the independence baseline), which is independent of this notebook. The rate-sensitivity table is a methodological result in its own right and supports E1. The case-profile table is descriptive and must not be presented as expert validation -- expert review remains future work in the Conclusion."
+}

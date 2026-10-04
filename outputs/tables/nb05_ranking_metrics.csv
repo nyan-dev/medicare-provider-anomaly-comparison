@@ -1,0 +1,7 @@
+Model,Anomaly type,ROC-AUC,Average Precision,Precision@n,Baseline AP (prevalence)
+Isolation Forest,All injected,0.9135,0.4451,0.4641,0.002
+Isolation Forest,A - global/extreme,0.9998,0.8831,0.7667,0.001
+Isolation Forest,B - local/density,0.8281,0.0027,0.0,0.001
+LOF,All injected,0.7492,0.2287,0.2541,0.002
+LOF,A - global/extreme,0.9405,0.354,0.3667,0.001
+LOF,B - local/density,0.56,0.0533,0.0769,0.001

@@ -1,0 +1,4 @@
+Model,Anomaly Count,Anomaly %,Normal Count,Published,Parity
+IF (contamination = 0.05),5000,5.00%,95000,5000,match
+LOF (auto),2565,2.56%,97435,2565,match
+LOF (contamination = 0.05),5000,5.00%,95000,5000,match

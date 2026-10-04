@@ -1,0 +1,4 @@
+Model Pair,Jaccard,CI lower (2.5%),CI upper (97.5%),Null Jaccard,CI excludes null,Independence null valid
+IF vs LOF(auto),0.0472,0.04244,0.05218,0.01725,True,True
+IF vs LOF(0.05),0.05764,0.05295,0.06235,0.02564,True,True
+LOF(auto) vs LOF(0.05),0.513,0.49898,0.52694,,,False

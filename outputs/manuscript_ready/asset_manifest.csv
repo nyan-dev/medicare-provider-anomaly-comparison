@@ -1,0 +1,27 @@
+kind,manuscript_name,source,section,status,note
+figure,Figure_1_distributions.png,nb01_fig1_distributions.png,2.1,revised,rebuilt - submitted version was an unreadable dense bar chart
+figure,Figure_2_correlation_heatmap.png,nb01_fig2_correlation_heatmap.png,2.1,reproduced,-
+figure,Figure_4_if_scatter.png,nb02_fig4_if_scatter.png,3.2,revised,log-log rescaled
+figure,Figure_5_lof_scatter.png,nb02_fig5_lof_scatter.png,3.2,revised,log-log rescaled
+figure,Figure_6_venn.png,nb04_fig6_venn.png,3.3,reproduced,-
+figure,Figure_7_contingency.png,nb04_fig7_contingency.png,3.3,corrected,"submitted version's cells implied 1,000 LOF anomalies; irreconcilable with Table 2"
+figure,Figure_8_sensitivity_heatmap.png,nb03_fig_sensitivity_heatmap.png,3.1 (new),new,C2
+figure,Figure_9_stability_curves.png,nb03_fig_stability_curves.png,3.1 (new),new,C2
+figure,Figure_10_synthetic_detection.png,nb05_fig_detection_by_mechanism.png,3.1 (new),new,C1
+figure,Figure_11_pr_curves.png,nb05_fig_pr_curves.png,3.1 (new),new,C1
+figure,Figure_12_jaccard_null_model.png,nb04_fig_null_model.png,3.3,new,E1
+figure,Figure_13_effect_sizes.png,nb06_fig_effect_sizes.png,3.4,new,C3
+table,Table_1_anomaly_counts,nb02_table1_anomaly_counts.csv,3.1,reproduced,-
+table,Table_2_jaccard_overlap,nb04_table2_jaccard_overlap.csv,3.3,reproduced,-
+table,Table_3_mannwhitney_effectsize,nb06_table3_mannwhitney_effectsize.csv,3.4,extended,original U values retained; rank-biserial and CLES added (C3)
+table,Table_4_chisquare_effectsize,nb06_table4_chisquare_effectsize.csv,3.4,extended,original chi-square retained; Cramer's V added (C3)
+table,Table_5_parameter_justification,nb03_parameter_justification.csv,3.1 (new),new,C2
+table,Table_6_sensitivity_if,nb03_sensitivity_if.csv,3.1 (new),new,C2
+table,Table_7_sensitivity_lof,nb03_sensitivity_lof.csv,3.1 (new),new,C2
+table,Table_8_synthetic_validation,nb05_synthetic_validation.csv,3.1 (new),new,C1
+table,Table_9_ranking_metrics,nb05_ranking_metrics.csv,3.1 (new),new,C1
+table,Table_10_injection_rate_sensitivity,nb05_injection_rate_sensitivity.csv,3.1 (new),new,C1 - methodological caveat on evaluating density-based detectors
+table,Table_11_jaccard_null_model,nb04_jaccard_null_model.csv,3.3,new,E1
+table,Table_12_jaccard_bootstrap_ci,nb04_jaccard_bootstrap_ci.csv,3.3,new,E1
+table,Table_13_consensus_case_profiles,nb05_consensus_case_profiles.csv,3.2 (new),new,"C1 - descriptive only, NOT expert validation"
+table,Table_14_descriptive_statistics,nb01_descriptive_statistics.csv,2.1,new,E1

@@ -1,0 +1,91 @@
+{
+  "notebook": "NB02",
+  "status": "SUCCESS",
+  "timestamp": "2026-09-20T21:09:53.013235",
+  "environment": {
+    "python": "3.13.15",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scikit_learn": "1.6.1",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.0",
+    "seaborn": "0.13.2"
+  },
+  "environment_delta_vs_parity_verified": {
+    "numpy": {
+      "verified": "2.0.2",
+      "observed": "2.1.3"
+    },
+    "pandas": {
+      "verified": "2.3.3",
+      "observed": "2.2.3"
+    },
+    "scipy": {
+      "verified": "1.13.1",
+      "observed": "1.16.3"
+    }
+  },
+  "seed": 42,
+  "inputs_consumed": [
+    "outputs/notebook_exports/summary_NB01.json",
+    "data/processed/features_raw.parquet"
+  ],
+  "outputs": {
+    "anomaly_labels": "data/processed/anomaly_labels.parquet",
+    "table1": "outputs/tables/nb02_table1_anomaly_counts.csv",
+    "figure_4": "outputs/figures/nb02_fig4_if_scatter.png",
+    "figure_5": "outputs/figures/nb02_fig5_lof_scatter.png"
+  },
+  "model_parameters": {
+    "isolation_forest": {
+      "n_estimators": 100,
+      "contamination": 0.05,
+      "random_state": 42,
+      "input": "X_scaled"
+    },
+    "lof_auto": {
+      "n_neighbors": 20,
+      "contamination": "auto",
+      "input": "X_scaled"
+    },
+    "lof_005": {
+      "n_neighbors": 20,
+      "contamination": 0.05,
+      "input": "X_scaled"
+    },
+    "scaler": "StandardScaler on all 7 features"
+  },
+  "key_results": {
+    "if_anomaly_count": 5000,
+    "lof_auto_anomaly_count": 2565,
+    "lof_05_anomaly_count": 5000,
+    "if_score_min": -0.29582590888486526,
+    "if_score_max": 0.21210462761415655,
+    "lof_auto_score_threshold": 1.5003961639153922,
+    "lof_05_score_threshold": 1.3380438011091431,
+    "label_columns": [
+      "IF_Label",
+      "IF_Score",
+      "LOF_Auto_Label",
+      "LOF_Auto_Score",
+      "LOF_05_Label",
+      "LOF_05_Score"
+    ]
+  },
+  "parity": {
+    "if_count_5000": true,
+    "lof_05_count_5000": true,
+    "lof_auto_count_2565": true,
+    "note": "if_count_5000 and lof_05_count_5000 are contamination x n and carry no diagnostic value. lof_auto_count_2565 is the data-dependent anchor."
+  },
+  "assertions": {
+    "upstream_nb01_verified": true,
+    "feature_medians_match_upstream": true,
+    "scaled_zero_mean_unit_variance": true,
+    "labels_encoded_neg1_pos1": true,
+    "lof_auto_parity_2565": true,
+    "table1_parity": true,
+    "parquet_roundtrip_verified": true
+  },
+  "downstream_note": "anomaly_labels.parquet aligns with features_raw.parquet BY ROW ORDER; neither file carries an index, so nothing downstream may sort or reindex. NB04 computes Table 2 overlaps -- expect IF n LOF(auto)=341, IF n LOF(0.05)=545, LOF(auto) n LOF(0.05)=2565, and LOF(auto) must be a strict subset of LOF(0.05). NB06 requires the recovered group definitions: 'Anomaly' means IF UNION LOF(0.05) (n=9,455), NOT IF alone -- see REPRODUCIBILITY.md section 5.2."
+}

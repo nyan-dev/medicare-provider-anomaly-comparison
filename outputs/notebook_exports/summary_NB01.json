@@ -1,0 +1,111 @@
+{
+  "notebook": "NB01",
+  "status": "SUCCESS",
+  "timestamp": "2026-09-20T19:47:36.642079",
+  "environment": {
+    "python": "3.13.15",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.0",
+    "seaborn": "0.13.2"
+  },
+  "seed": 42,
+  "inputs_consumed": [
+    "data/raw/healthcare_providers.csv"
+  ],
+  "data_provenance": {
+    "sha256": "3ab905111f47b32ab030ed5b106bbaf602961ed04d4a16ff615d2453911b9991",
+    "bytes": 23362829,
+    "checksum_matches_parity_snapshot": true
+  },
+  "outputs": {
+    "features_matrix": "data/processed/features_raw.parquet",
+    "descriptive_stats": "outputs/tables/nb01_descriptive_statistics.csv",
+    "correlation_matrix": "outputs/tables/nb01_correlation_matrix.csv",
+    "figure_1": "outputs/figures/nb01_fig1_distributions.png",
+    "figure_2": "outputs/figures/nb01_fig2_correlation_heatmap.png"
+  },
+  "key_results": {
+    "raw_shape": [
+      100000,
+      27
+    ],
+    "feature_shape": [
+      100000,
+      7
+    ],
+    "feature_names": [
+      "Number of Services",
+      "Number of Medicare Beneficiaries",
+      "Number of Distinct Medicare Beneficiary/Per Day Services",
+      "Average Medicare Allowed Amount",
+      "Average Submitted Charge Amount",
+      "Average Medicare Payment Amount",
+      "Average Medicare Standardized Amount"
+    ],
+    "nan_after_cleaning": 0,
+    "median": {
+      "Number of Services": 43.0,
+      "Number of Medicare Beneficiaries": 32.0,
+      "Number of Distinct Medicare Beneficiary/Per Day Services": 40.0,
+      "Average Medicare Allowed Amount": 65.095,
+      "Average Submitted Charge Amount": 146.0,
+      "Average Medicare Payment Amount": 47.020176470500004,
+      "Average Medicare Standardized Amount": 47.8410940755
+    },
+    "mean": {
+      "Number of Services": 239.67142400000006,
+      "Number of Medicare Beneficiaries": 89.80931,
+      "Number of Distinct Medicare Beneficiary/Per Day Services": 142.11568,
+      "Average Medicare Allowed Amount": 101.43415478391368,
+      "Average Submitted Charge Amount": 354.5504508157946,
+      "Average Medicare Payment Amount": 77.3587953777561,
+      "Average Medicare Standardized Amount": 78.03069297594281
+    },
+    "std": {
+      "Number of Services": 2493.1870890498203,
+      "Number of Medicare Beneficiaries": 1109.616901666514,
+      "Number of Distinct Medicare Beneficiary/Per Day Services": 1640.2272282009333,
+      "Average Medicare Allowed Amount": 257.2427787485594,
+      "Average Submitted Charge Amount": 1062.6082712547693,
+      "Average Medicare Payment Amount": 199.71881345283612,
+      "Average Medicare Standardized Amount": 200.04545774030595
+    },
+    "min": {
+      "Number of Services": 11.0,
+      "Number of Medicare Beneficiaries": 11.0,
+      "Number of Distinct Medicare Beneficiary/Per Day Services": 11.0,
+      "Average Medicare Allowed Amount": 0.01,
+      "Average Submitted Charge Amount": 0.01,
+      "Average Medicare Payment Amount": 0.0086792453,
+      "Average Medicare Standardized Amount": 0.0086792453
+    },
+    "max": {
+      "Number of Services": 282739.0,
+      "Number of Medicare Beneficiaries": 190306.0,
+      "Number of Distinct Medicare Beneficiary/Per Day Services": 282737.0,
+      "Average Medicare Allowed Amount": 20494.0,
+      "Average Submitted Charge Amount": 62694.0,
+      "Average Medicare Payment Amount": 16067.3,
+      "Average Medicare Standardized Amount": 16957.148
+    },
+    "skewness": {
+      "Number of Services": 54.43788851221397,
+      "Number of Medicare Beneficiaries": 124.12645229641271,
+      "Number of Distinct Medicare Beneficiary/Per Day Services": 120.04288123059627,
+      "Average Medicare Allowed Amount": 31.672485356214995,
+      "Average Submitted Charge Amount": 18.309043863529023,
+      "Average Medicare Payment Amount": 31.651541710274923,
+      "Average Medicare Standardized Amount": 31.368333706500508
+    },
+    "max_abs_offdiag_correlation": 0.9987039748961641
+  },
+  "assertions": {
+    "raw_shape_is_100000x27": true,
+    "feature_shape_is_100000x7": true,
+    "zero_nan_after_currency_strip": true,
+    "all_features_float64": true,
+    "parquet_roundtrip_verified": true
+  },
+  "downstream_note": "NB02 consumes data/processed/features_raw.parquet. Apply StandardScaler to all 7 features, then fit IsolationForest(n_estimators=100, contamination=0.05, random_state=42) and LocalOutlierFactor(n_neighbors=20) at contamination 'auto' and 0.05, all on the scaled matrix. Expected: IF 5000, LOF(0.05) 5000, LOF(auto) 2565 -- the last of these is the first diagnostic parity check in the pipeline; the two 5000s are contamination x n and hold regardless of input."
+}

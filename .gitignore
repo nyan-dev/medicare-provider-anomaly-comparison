@@ -1,0 +1,39 @@
+
+
+# macOS on exFAT/FAT volumes: AppleDouble sidecars regenerate constantly.
+# One of these landing in .git/objects/pack/ corrupts git reads.
+._*
+.DS_Store
+.Spotlight-V100
+.Trashes
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# Jupyter
+*.ipynb_checkpoints/
+
+# Windows system files
+desktop.ini
+
+# Environment
+.env
+.env.local
+# Large data files — too large for GitHub; raw data available on Kaggle
+data/raw/
+data/processed/
+
+# Scratch/temp files generated during working sessions
+scratch_*.txt
+
+# Old working repo — not part of the final pipeline
+Old-repo/
+
+# Draft manuscript copies — only the final submission file is tracked
+Resubmit-Version/*Copy*.docx
+
+# NOTE: outputs/ (tables, figures, notebook exports) are deliberately tracked.
+# The pipeline's reproducibility depends on these being version-controlled.

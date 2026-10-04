@@ -1,0 +1,165 @@
+{
+  "notebook": "NB06",
+  "status": "SUCCESS",
+  "timestamp": "2026-09-20T22:38:36.247986",
+  "environment": {
+    "python": "3.13.15",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.0",
+    "seaborn": "0.13.2"
+  },
+  "seed": 42,
+  "addresses_comment": "C3",
+  "inputs_consumed": [
+    "outputs/notebook_exports/summary_NB02.json",
+    "data/processed/features_raw.parquet",
+    "data/processed/anomaly_labels.parquet",
+    "data/raw/healthcare_providers.csv"
+  ],
+  "outputs": {
+    "table3": "outputs/tables/nb06_table3_mannwhitney_effectsize.csv",
+    "table4": "outputs/tables/nb06_table4_chisquare_effectsize.csv",
+    "figure_effect_sizes": "outputs/figures/nb06_fig_effect_sizes.png"
+  },
+  "group_definitions": {
+    "Anomaly": "IF UNION LOF(0.05)",
+    "Normal": "flagged by neither",
+    "IF Only": "IF \\ LOF(0.05)",
+    "LOF Only": "LOF(0.05) \\ IF",
+    "sizes": {
+      "Anomaly": 9455,
+      "Normal": 90545,
+      "IF Only": 4455,
+      "LOF Only": 4455
+    },
+    "note": "Recovered empirically; absent from the manuscript. LOF(auto) is not used."
+  },
+  "key_results": {
+    "table3": [
+      {
+        "Comparison": "Anomaly vs Normal",
+        "Feature": "Number of Services",
+        "n (group 1)": 9455,
+        "n (group 2)": 90545,
+        "U Statistic": 509846027.5,
+        "p-value": 5.460103291536411e-206,
+        "Rank-Biserial r": 0.1911,
+        "CLES": 0.5955,
+        "Published U": 510000000.0,
+        "Parity": "match"
+      },
+      {
+        "Comparison": "Anomaly vs Normal",
+        "Feature": "Average Medicare Payment Amount",
+        "n (group 1)": 9455,
+        "n (group 2)": 90545,
+        "U Statistic": 536136230.5,
+        "p-value": 0.0,
+        "Rank-Biserial r": 0.2525,
+        "CLES": 0.6263,
+        "Published U": 536000000.0,
+        "Parity": "match"
+      },
+      {
+        "Comparison": "IF Only vs LOF Only",
+        "Feature": "Number of Services",
+        "n (group 1)": 4455,
+        "n (group 2)": 4455,
+        "U Statistic": 12080942.5,
+        "p-value": 1.1422765058452959e-70,
+        "Rank-Biserial r": 0.2174,
+        "CLES": 0.6087,
+        "Published U": 12100000.0,
+        "Parity": "match"
+      },
+      {
+        "Comparison": "IF Only vs LOF Only",
+        "Feature": "Average Medicare Payment Amount",
+        "n (group 1)": 4455,
+        "n (group 2)": 4455,
+        "U Statistic": 14621309.0,
+        "p-value": 0.0,
+        "Rank-Biserial r": 0.4734,
+        "CLES": 0.7367,
+        "Published U": 14600000.0,
+        "Parity": "match"
+      }
+    ],
+    "table4": [
+      {
+        "Comparison": "Anomaly vs Normal",
+        "Feature": "Provider Type",
+        "n": 100000,
+        "Categories": 90,
+        "dof": 89,
+        "Chi-Square": 7496.33,
+        "p-value": 0.0,
+        "Cramers V": 0.2738,
+        "Published Chi-Square": 7496.33,
+        "Parity": "match"
+      },
+      {
+        "Comparison": "Anomaly vs Normal",
+        "Feature": "Entity Type of the Provider",
+        "n": 100000,
+        "Categories": 2,
+        "dof": 1,
+        "Chi-Square": 1855.13,
+        "p-value": 0.0,
+        "Cramers V": 0.1362,
+        "Published Chi-Square": 1855.13,
+        "Parity": "match"
+      },
+      {
+        "Comparison": "IF Only vs LOF Only",
+        "Feature": "Provider Type",
+        "n": 8910,
+        "Categories": 83,
+        "dof": 82,
+        "Chi-Square": 2408.72,
+        "p-value": 0.0,
+        "Cramers V": 0.5199,
+        "Published Chi-Square": 2408.72,
+        "Parity": "match"
+      },
+      {
+        "Comparison": "IF Only vs LOF Only",
+        "Feature": "Entity Type of the Provider",
+        "n": 8910,
+        "Categories": 2,
+        "dof": 1,
+        "Chi-Square": 157.39,
+        "p-value": 4.198818854099022e-36,
+        "Cramers V": 0.1329,
+        "Published Chi-Square": 157.39,
+        "Parity": "match"
+      }
+    ],
+    "payment_effect_ratio_ifvlof_over_anomvnorm": 1.875,
+    "provider_effect_ratio_ifvlof_over_anomvnorm": 1.899,
+    "all_effect_ratios_ifvlof_over_anomvnorm": {
+      "Number of Services": 1.138,
+      "Average Medicare Payment Amount": 1.875,
+      "Provider Type": 1.899,
+      "Entity Type of the Provider": 0.976
+    },
+    "features_substantially_larger": [
+      "Average Medicare Payment Amount",
+      "Provider Type"
+    ],
+    "features_no_difference": [
+      "Entity Type of the Provider"
+    ],
+    "models_differ_more_than_anomalies_differ_from_normal": true
+  },
+  "assertions": {
+    "upstream_nb02_verified": true,
+    "group_sizes_match_recovered_definitions": true,
+    "table3_u_parity": true,
+    "table4_chi2_parity": true,
+    "all_p_values_below_0001": true
+  },
+  "downstream_note": "NB07 renders both tables and the effect-size figure as the revised section 3.4. Report effect sizes ALONGSIDE the original statistics -- the published U and chi-square values are unchanged and must stay in the tables. The substantive finding is that both normalised measures place the IF-only vs LOF-only contrast above the anomaly-vs-normal contrast, which is independent support for complementarity and does not rely on NB05. If conventional small/medium/large bands are quoted, note that the usual citation (Cohen 1988) would add an eighth pre-2016 reference and worsen the C6 recency ratio; the relative comparison needs no external benchmark."
+}

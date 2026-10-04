@@ -1,0 +1,4 @@
+Model Pair,Observed Overlap,Expected Overlap (null),SD (null),Z,P(X >= observed),Observed Jaccard,Expected Jaccard (null),Enrichment (x chance),Independence null valid
+IF vs LOF(auto),341,128.25,10.9,19.53,6.548541618020484e-61,0.0472,0.01725,2.74,True
+IF vs LOF(0.05),545,250.0,15.02,19.64,6.709250713931354e-67,0.05764,0.02564,2.25,True
+LOF(auto) vs LOF(0.05),2565,128.25,10.9,223.65,0.0,0.513,0.01725,29.75,False

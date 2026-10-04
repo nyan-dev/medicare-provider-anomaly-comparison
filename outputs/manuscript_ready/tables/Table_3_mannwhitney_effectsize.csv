@@ -1,0 +1,5 @@
+Comparison,Feature,n (group 1),n (group 2),U Statistic,p-value,Rank-Biserial r,CLES,Published U,Parity
+Anomaly vs Normal,Number of Services,9455,90545,509846027.5,5.460103291536411e-206,0.1911,0.5955,510000000.0,match
+Anomaly vs Normal,Average Medicare Payment Amount,9455,90545,536136230.5,0.0,0.2525,0.6263,536000000.0,match
+IF Only vs LOF Only,Number of Services,4455,4455,12080942.5,1.142276505845296e-70,0.2174,0.6087,12100000.0,match
+IF Only vs LOF Only,Average Medicare Payment Amount,4455,4455,14621309.0,0.0,0.4734,0.7367,14600000.0,match

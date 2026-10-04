@@ -1,0 +1,116 @@
+{
+  "notebook": "NB04",
+  "status": "SUCCESS",
+  "timestamp": "2026-09-20T22:01:48.800899",
+  "environment": {
+    "python": "3.13.15",
+    "numpy": "2.1.3",
+    "pandas": "2.2.3",
+    "scipy": "1.16.3",
+    "matplotlib": "3.10.0",
+    "seaborn": "0.13.2",
+    "matplotlib_venn": "1.1.2"
+  },
+  "seed": 42,
+  "addresses_comment": "E1 (plus manuscript Table 2, Figures 6-7)",
+  "inputs_consumed": [
+    "outputs/notebook_exports/summary_NB02.json",
+    "data/processed/anomaly_labels.parquet",
+    "data/processed/features_raw.parquet"
+  ],
+  "outputs": {
+    "table2": "outputs/tables/nb04_table2_jaccard_overlap.csv",
+    "null_model": "outputs/tables/nb04_jaccard_null_model.csv",
+    "bootstrap_ci": "outputs/tables/nb04_jaccard_bootstrap_ci.csv",
+    "consensus_set": "data/processed/consensus_anomalies.parquet",
+    "figure_6": "outputs/figures/nb04_fig6_venn.png",
+    "figure_7": "outputs/figures/nb04_fig7_contingency.png",
+    "figure_null_model": "outputs/figures/nb04_fig_null_model.png"
+  },
+  "key_results": {
+    "overlap_if_lof_auto": 341,
+    "overlap_if_lof_05": 545,
+    "overlap_lof_auto_lof_05": 2565,
+    "jaccard_if_lof_auto": 0.0472,
+    "jaccard_if_lof_05": 0.05764,
+    "jaccard_lof_auto_lof_05": 0.513,
+    "lof_auto_nested_in_lof_05": true,
+    "consensus_set_size": 545,
+    "null_model": [
+      {
+        "Model Pair": "IF vs LOF(auto)",
+        "Observed Overlap": 341,
+        "Expected Overlap (null)": 128.25,
+        "SD (null)": 10.9,
+        "Z": 19.53,
+        "P(X >= observed)": 6.548541618020484e-61,
+        "Observed Jaccard": 0.0472,
+        "Expected Jaccard (null)": 0.01725,
+        "Enrichment (x chance)": 2.74,
+        "Independence null valid": true
+      },
+      {
+        "Model Pair": "IF vs LOF(0.05)",
+        "Observed Overlap": 545,
+        "Expected Overlap (null)": 250.0,
+        "SD (null)": 15.02,
+        "Z": 19.64,
+        "P(X >= observed)": 6.709250713931354e-67,
+        "Observed Jaccard": 0.05764,
+        "Expected Jaccard (null)": 0.02564,
+        "Enrichment (x chance)": 2.25,
+        "Independence null valid": true
+      },
+      {
+        "Model Pair": "LOF(auto) vs LOF(0.05)",
+        "Observed Overlap": 2565,
+        "Expected Overlap (null)": 128.25,
+        "SD (null)": 10.9,
+        "Z": 223.65,
+        "P(X >= observed)": 0.0,
+        "Observed Jaccard": 0.513,
+        "Expected Jaccard (null)": 0.01725,
+        "Enrichment (x chance)": 29.75,
+        "Independence null valid": false
+      }
+    ],
+    "bootstrap_ci": [
+      {
+        "Model Pair": "IF vs LOF(auto)",
+        "Jaccard": 0.0472,
+        "CI lower (2.5%)": 0.04244,
+        "CI upper (97.5%)": 0.05218,
+        "Null Jaccard": 0.01725,
+        "CI excludes null": true,
+        "Independence null valid": true
+      },
+      {
+        "Model Pair": "IF vs LOF(0.05)",
+        "Jaccard": 0.05764,
+        "CI lower (2.5%)": 0.05295,
+        "CI upper (97.5%)": 0.06235,
+        "Null Jaccard": 0.02564,
+        "CI excludes null": true,
+        "Independence null valid": true
+      },
+      {
+        "Model Pair": "LOF(auto) vs LOF(0.05)",
+        "Jaccard": 0.513,
+        "CI lower (2.5%)": 0.49898,
+        "CI upper (97.5%)": 0.52694,
+        "Null Jaccard": NaN,
+        "CI excludes null": null,
+        "Independence null valid": false
+      }
+    ],
+    "n_bootstrap": 10000
+  },
+  "assertions": {
+    "upstream_nb02_verified": true,
+    "table2_overlap_parity": true,
+    "lof_auto_strict_subset_of_lof_05": true,
+    "consensus_set_is_545": true,
+    "contingency_sums_to_N": true
+  },
+  "downstream_note": "NB05 consumes data/processed/consensus_anomalies.parquet (545 records, with record_index giving position in features_raw.parquet) for its case-profile table. NB07 renders Figures 6, 7 and the null-model figure. MANUSCRIPT ACTION: the E1 result reverses the reading of section 3.3 -- observed overlap exceeds the independence baseline by roughly 2.2x to 2.7x, so 'low Jaccard therefore the models disagree' is not supported. Complementarity still holds, but the wording in section 3.3 and the abstract must be revised and the change disclosed in the cover letter."
+}

@@ -1,0 +1,5 @@
+Comparison,Feature,n,Categories,dof,Chi-Square,p-value,Cramers V,Published Chi-Square,Parity
+Anomaly vs Normal,Provider Type,100000,90,89,7496.33,0.0,0.2738,7496.33,match
+Anomaly vs Normal,Entity Type of the Provider,100000,2,1,1855.13,0.0,0.1362,1855.13,match
+IF Only vs LOF Only,Provider Type,8910,83,82,2408.72,0.0,0.5199,2408.72,match
+IF Only vs LOF Only,Entity Type of the Provider,8910,2,1,157.39,4.198818854099022e-36,0.1329,157.39,match

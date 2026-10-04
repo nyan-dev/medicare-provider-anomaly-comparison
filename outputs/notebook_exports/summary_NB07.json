@@ -1,0 +1,41 @@
+{
+  "notebook": "NB07",
+  "status": "SUCCESS",
+  "timestamp": "2026-09-20T22:44:19.901597",
+  "environment": {
+    "python": "3.13.15",
+    "pandas": "2.2.3"
+  },
+  "computation_performed": "none - assembly, reformatting and verification only",
+  "inputs_consumed": [
+    "outputs/notebook_exports/summary_NB01.json",
+    "outputs/notebook_exports/summary_NB02.json",
+    "outputs/notebook_exports/summary_NB03.json",
+    "outputs/notebook_exports/summary_NB04.json",
+    "outputs/notebook_exports/summary_NB05.json",
+    "outputs/notebook_exports/summary_NB06.json"
+  ],
+  "outputs": {
+    "manuscript_ready_dir": "outputs/manuscript_ready/",
+    "asset_manifest": "outputs/manuscript_ready/asset_manifest.csv",
+    "parity_record": "outputs/manuscript_ready/parity_record.csv"
+  },
+  "key_results": {
+    "figures_assembled": 12,
+    "tables_assembled": 14,
+    "core_tables_with_latex": 4,
+    "new_figures": 6,
+    "new_tables": 10,
+    "orphaned_files": 2,
+    "parity_values_checked": 14,
+    "parity_all_match": true
+  },
+  "assertions": {
+    "all_six_handshakes_success": true,
+    "no_claimed_artefact_missing": true,
+    "all_manifest_figures_present": true,
+    "all_manifest_tables_present": true,
+    "end_to_end_parity_holds": true
+  },
+  "downstream_note": "outputs/manuscript_ready/ is the submission package. Figures 1-7 keep their submitted numbering; 8-13 are new. Figure 3 from the submitted paper (Statistical Test Selection Matrix) has NO counterpart here and was not rebuilt - it conveyed no information and should be dropped, with subsequent figures renumbered, or replaced by Figure 13. Thirteen figures is a lot for one article: Figures 8-12 are strong candidates for supplementary material, keeping the main text to the core narrative. Remaining manuscript work is text-only: C4 abstract, C5 conclusion, C6 references, E2 novelty, E3 front matter, E4 editorial pass."
+}

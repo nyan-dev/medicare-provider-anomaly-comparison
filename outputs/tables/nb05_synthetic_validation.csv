@@ -1,0 +1,7 @@
+Model,Anomaly type,N injected,Detected,Precision,Recall,F1
+Isolation Forest,All injected,181,97,0.0214,0.5359,0.0411
+Isolation Forest,A - global/extreme,90,90,0.0199,1.0,0.039
+Isolation Forest,B - local/density,91,7,0.0016,0.0769,0.0031
+LOF,All injected,181,76,0.0168,0.4199,0.0322
+LOF,A - global/extreme,90,48,0.0106,0.5333,0.0209
+LOF,B - local/density,91,28,0.0062,0.3077,0.0122
